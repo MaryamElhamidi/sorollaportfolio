@@ -5,14 +5,15 @@ import "../styles/hamburgers.css";
 
 <header class="fixed top-4 left-0 right-0 z-50 w-full px-6">
   <nav class="flex items-center justify-between bg-white/80 backdrop-blur-md rounded-full py-2 shadow-lg container mx-auto px-4">
+    
     <!-- Logo / Name -->
     <a class="relative text-black font-bold" href="/">
       Maryam Elhamidi
       <span class="absolute left-0 bottom-0 w-full h-1 bg-ppink rounded-sm"></span>
     </a>
 
-    <!-- Desktop Links -->
-    <ul class="hidden sm:flex items-center gap-6"> <!-- CHANGE: md:flex → sm:flex -->
+    <!-- Desktop Links (visible on large screens) -->
+    <ul class="hidden lg:flex items-center gap-6"> 
       <li><Link href="#projects" text="My Projects" style="primary" /></li>
       <li><Link href="#about" text="About Me" style="secondary" /></li>
       <li><Link href="#resume" text="Resume" style="tertiary" /></li>
@@ -35,15 +36,18 @@ import "../styles/hamburgers.css";
     </ul>
 
     <!-- Hamburger for mobile -->
-    <div class="sm:hidden flex items-center gap-4"> <!-- CHANGE: md:hidden → sm:hidden -->
-      <button class="hamburger hamburger--elastic" type="button">
-        <span class="hamburger-box">
-          <span class="hamburger-inner"></span>
-        </span>
-      </button>
+<!-- Hamburger for mobile -->
+<div class="lg:hidden flex items-center gap-4 relative">
+  <button class="hamburger hamburger--elastic z-50" type="button">
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+  </button>
+</div>
 
-      <!-- Mobile menu -->
-      <div id="navigation" class="fixed top-20 left-1/2 transform -translate-x-1/2 -translate-y-full w-11/12 max-w-sm bg-white rounded-xl shadow-lg transition-transform duration-300 ease-in-out z-50 overflow-hidden">
+
+      <!-- Mobile dropdown menu -->
+      <div id="navigation" class="fixed top-16 left-1/2 transform -translate-x-1/2 -translate-y-full w-11/12 max-w-sm bg-white rounded-xl shadow-2xl transition-transform duration-500 ease-in-out z-40 overflow-hidden">
         <ul class="flex flex-col items-center justify-center gap-6 py-6">
           <li><Link href="#projects" text="My Projects" style="primary" /></li>
           <li><Link href="#about" text="About Me" style="secondary" /></li>
@@ -80,16 +84,19 @@ document.addEventListener("astro:after-swap", init);
 
 <style>
 /* Hamburger animation */
-.hamburger.is-active .hamburger-inner {
-  transform: rotate(45deg);
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+  transition: all 0.5s ease;
 }
 
-.hamburger.is-active .hamburger-inner::before {
-  transform: rotate(90deg) translateX(0);
+/* Spin once animation */
+@keyframes spin-once {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
-
-.hamburger.is-active .hamburger-inner::after {
-  transform: rotate(90deg) translateX(0);
+.animate-spin-once {
+  animation: spin-once 0.5s forwards;
 }
 
 /* Hire Me stars hover */
@@ -108,8 +115,12 @@ document.addEventListener("astro:after-swap", init);
   position: absolute;
 }
 
-/* Ensure smooth dropdown */
+/* Optional: mobile menu fade + slide */
 #navigation {
-  transform-origin: top center;
+  opacity: 0;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+#navigation.translate-y-0 {
+  opacity: 1;
 }
 </style>
