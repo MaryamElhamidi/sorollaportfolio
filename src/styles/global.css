@@ -20,9 +20,9 @@
     --shadow-pblue: 7px 7px #96C7F2;
     --shadow-pgreen: 7px 7px #ADF296;
     --shadow-ppink: 7px 7px #F396E5;
-    --shadow-pblueHover: 10px 10px #96C7F2;
-    --shadow-pgreenHover: 10px 10px #ADF296;
-    --shadow-ppinkHover: 10px 10px #F396E5;
+    --shadow-pblueHover: 4px 4px #96C7F2;
+    --shadow-pgreenHover: 4px 4px #ADF296;
+    --shadow-ppinkHover: 4px 4px #F396E5;
     --shadow-pyellow: 7px 7px #F2CF96;
 
     /* Fonts */
@@ -237,4 +237,9 @@ ul > li.flex.items-center a:hover img {
   opacity: 0.6;
   z-index: -1;
   border-radius: 0.15em;
+}
+
+nav {
+  height: 60px; /* or whatever height fits your design */
+  min-height: 60px;
 }

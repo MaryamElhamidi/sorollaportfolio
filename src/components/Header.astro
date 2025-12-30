@@ -3,17 +3,17 @@ import Link from "./HeaderLink.astro";
 import "../styles/hamburgers.css";
 ---
 
-<header class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-auto">
-  <nav class="flex items-center justify-between bg-white/80 backdrop-blur-md rounded-full px-6 py-2 shadow-lg container mx-auto md:p-6">
-    <!-- Logo -->
-    <a class="flex items-center gap-2" href="/">
-      <p class="pt-2 md:text-lg font-semibold flex">
-        <span class="text-ppink">Maryam Elhamidi</span>
-      </p>
-    </a>
+<header class="fixed top-4 left-0 right-0 z-50 w-full px-6">
+  <nav class="flex items-center justify-between bg-white/80 backdrop-blur-md rounded-full py-2 shadow-lg container mx-auto md:px-10">
+    <!-- Logo / Name -->
+<span class="relative text-black font-bold">
+  Maryam Elhamidi
+  <span class="absolute left-0 bottom-0 w-full h-1 bg-ppink rounded-sm"></span>
+</span>
+
 
     <!-- Desktop Links -->
-    <ul class="items-center md:gap-6 text-nowrap hidden md:flex">
+    <ul class="hidden md:flex items-center gap-6">
       <li><Link href="#projects" text="My Projects" style="primary" /></li>
       <li><Link href="#about" text="About Me" style="secondary" /></li>
       <li><Link href="#resume" text="Resume" style="tertiary" /></li>
@@ -28,7 +28,7 @@ import "../styles/hamburgers.css";
         </a>
       </li>
 
-      <!-- Hire Me Button with stars -->
+      <!-- Hire Me Button -->
       <li class="relative flex items-center justify-center ml-4 hire-me-container">
         <a
           href="#contact"
@@ -52,7 +52,7 @@ import "../styles/hamburgers.css";
         </span>
       </button>
 
-      <div id="navigation" class="fixed top-0 left-0 w-full h-full bg-white transform -translate-y-full transition-transform duration-300 ease-in-out">
+      <div id="navigation" class="fixed top-0 left-10 w-full h-full bg-white transform -translate-y-full transition-transform duration-300 ease-in-out">
         <ul class="flex flex-col items-center justify-center h-full gap-8 text-nowrap">
           <li><Link href="#projects" text="My Projects" style="primary" /></li>
           <li><Link href="#about" text="About Me" style="secondary" /></li>
