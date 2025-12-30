@@ -172,6 +172,14 @@ ul > li.flex.items-center a:hover img {
   pointer-events: auto;
 }
 
+#bg-blocker {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+
 /* =====================
    SHAPES
 ===================== */
@@ -209,6 +217,7 @@ ul > li.flex.items-center a:hover img {
 /* =====================
    PAGE CONTENT LAYER
 ===================== */
+
 .content-layer {
   position: relative;
   z-index: 10;
@@ -242,4 +251,7 @@ ul > li.flex.items-center a:hover img {
 nav {
   height: 60px; /* or whatever height fits your design */
   min-height: 60px;
+}
+body {
+  overflow-y: auto;
 }
