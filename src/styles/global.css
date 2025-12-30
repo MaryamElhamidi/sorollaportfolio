@@ -255,3 +255,19 @@ nav {
 body {
   overflow-y: auto;
 }
+/* Partial underline effect */
+.name-link {
+  position: relative;
+  display: inline-block;
+}
+
+/* Initially underline only the first letter 'M' */
+.underline-partial {
+  width: 1.5ch; /* roughly the width of "M" */
+  left: 0;
+}
+
+/* Expand to full width on hover */
+.name-link:hover .underline-partial {
+  width: 100%;
+}
