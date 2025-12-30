@@ -126,3 +126,115 @@ body {
     font-family: 'Alexandria', sans-serif;
     background-color: #f2f2f2;
 }
+
+/* Social icons vertical alignment tweak */
+ul > li.flex.items-center img {
+  vertical-align: middle;
+}
+
+/* Hover animation for social icons */
+ul > li.flex.items-center a:hover img {
+  transform: translateY(-2px);
+  transition: transform 0.2s;
+}
+
+/* Stars container */
+.hire-me-container .stars {
+  position: absolute;
+  top: 50%;           /* center vertically */
+  left: 40%;          /* center horizontally */
+  width: 135px;       /* adjust size as needed */
+  height: 135px;      /* adjust size as needed */
+  transform: translate(-50%, -50%); /* center based on width/height */
+  z-index: 50;        /* above button */
+  opacity: 0;         /* for animation if needed */
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+/* background for page */
+
+/* =====================
+   BACKGROUND GRID
+===================== */
+:root {
+  --col-count: 15;
+}
+
+#bg-container {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--col-count), 1fr);
+  grid-auto-rows: 1fr;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: auto;
+}
+
+/* =====================
+   SHAPES
+===================== */
+.shape {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  opacity: 0.1;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.shape:hover {
+  opacity: 0.5;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.square {
+  border-radius: 20%;
+}
+
+.diamond {
+  transform: rotate(45deg) scale(0.8);
+  border-radius: 20%;
+}
+
+/* Colors */
+.red { background-color: #bbd0ff; }
+.yellow { background-color: #ffd6ff; }
+.green { background-color: #caffbf; }
+.blue { background-color: #fdffb6; }
+
+/* =====================
+   PAGE CONTENT LAYER
+===================== */
+.content-layer {
+  position: relative;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.content-layer a,
+.content-layer button,
+.content-layer input {
+  pointer-events: auto;
+}
+
+.highlight-marker {
+  position: relative;
+  z-index: 1;
+}
+
+.highlight-marker::after {
+  content: "";
+  position: absolute;
+  left: -0.15em;
+  bottom: 0.1em;
+  width: 110%;
+  height: 0.5em;
+  background-color: #F396E5;
+  opacity: 0.6;
+  z-index: -1;
+  border-radius: 0.15em;
+}

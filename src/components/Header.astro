@@ -3,22 +3,49 @@ import Link from "./HeaderLink.astro";
 import "../styles/hamburgers.css";
 ---
 
-<header>
-  <nav
-    class="flex container mx-auto md:p-10 px-4 py-6 items-center justify-between"
-  >
+<header class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-auto">
+  <nav class="flex items-center justify-between bg-white/80 backdrop-blur-md rounded-full px-6 py-2 shadow-lg container mx-auto md:p-6">
+    <!-- Logo -->
     <a class="flex items-center gap-2" href="/">
-      <p class="font-kablamo text-ppink text-4xl md:text-5xl">S</p>
       <p class="pt-2 md:text-lg font-semibold flex">
-        <span class="hidden md:block">Joaquín</span> Sorolla
+        <span class="text-ppink">Maryam Elhamidi</span>
       </p>
     </a>
-    <ul class="items-center md:gap-8 text-nowrap hidden md:flex">
-      <li><Link href="/" text="Home" style="primary" /></li>
-      <li><Link href="/about" text="What I do" style="secondary" /></li>
-      <li><Link href="/blog" text="My work" style="tertiary" /></li>
+
+    <!-- Desktop Links -->
+    <ul class="items-center md:gap-6 text-nowrap hidden md:flex">
+      <li><Link href="#projects" text="My Projects" style="primary" /></li>
+      <li><Link href="#about" text="About Me" style="secondary" /></li>
+      <li><Link href="#resume" text="Resume" style="tertiary" /></li>
+
+      <!-- Social Icons -->
+      <li class="flex items-center gap-2 ml-4">
+        <a href="#" target="_blank">
+          <img src="/icons/linkedin.png" alt="LinkedIn" class="w-6 h-6" />
+        </a>
+        <a href="#" target="_blank">
+          <img src="/icons/github.png" alt="GitHub" class="w-6 h-6" />
+        </a>
+      </li>
+
+      <!-- Hire Me Button with stars -->
+      <li class="relative flex items-center justify-center ml-4 hire-me-container">
+        <a
+          href="#contact"
+          class="hire-me-btn relative z-10 px-4 py-2 rounded-full bg-ppink text-white font-semibold hover:bg-black transition-colors"
+        >
+          Hire Me
+        </a>
+
+        <!-- Stars container -->
+        <div class="stars absolute top-0 left-0 w-full h-full pointer-events-none">
+          <img src="/icons/stars.png" class="star star-2" />
+        </div>
+      </li>
     </ul>
-    <div class="md:hidden z-40">
+
+    <!-- Hamburger for mobile -->
+    <div class="md:hidden z-40 flex items-center gap-4">
       <button class="hamburger hamburger--elastic" type="button">
         <span class="hamburger-box">
           <span class="hamburger-inner"></span>
@@ -27,27 +54,66 @@ import "../styles/hamburgers.css";
 
       <div id="navigation" class="fixed top-0 left-0 w-full h-full bg-white transform -translate-y-full transition-transform duration-300 ease-in-out">
         <ul class="flex flex-col items-center justify-center h-full gap-8 text-nowrap">
-          <li><Link href="/" text="Home" style="primary" /></li>
-          <li><Link href="/about" text="What I do" style="secondary" /></li>
-          <li><Link href="/blog" text="My work" style="tertiary" /></li>
+          <li><Link href="#projects" text="My Projects" style="primary" /></li>
+          <li><Link href="#about" text="About Me" style="secondary" /></li>
+          <li><Link href="#resume" text="Resume" style="tertiary" /></li>
+          <li>
+            <a href="#" target="_blank">LinkedIn</a>
+          </li>
+          <li>
+            <a href="#" target="_blank">GitHub</a>
+          </li>
+          <li>
+            <a href="#contact" class="px-4 py-1 rounded-full bg-ppink text-white font-semibold hover:bg-pblue transition-colors">
+              Hire Me
+            </a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 </header>
-<script is:inline>
-  function init(){
-    const hamburger = document.querySelector(".hamburger");
-    const menu = document.getElementById("navigation");
 
-    if (hamburger && menu) {
-      hamburger.addEventListener("click", () => {
-        hamburger.classList.toggle("is-active");
-        menu.classList.toggle("-translate-y-full");
-        menu.classList.toggle("translate-y-0");
-      });
-    }
+<script is:inline>
+function init() {
+  const hamburger = document.querySelector(".hamburger");
+  const menu = document.getElementById("navigation");
+
+  if (hamburger && menu) {
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("is-active");
+      menu.classList.toggle("-translate-y-full");
+      menu.classList.toggle("translate-y-0");
+    });
   }
-  init();
-  document.addEventListener("astro:after-swap", init);
+}
+init();
+document.addEventListener("astro:after-swap", init);
 </script>
+
+<style>
+/* Spin once animation */
+@keyframes spin-once {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-once {
+  animation: spin-once 0.5s forwards;
+}
+
+/* Hire Me stars hover */
+.hire-me-btn:hover ~ .stars {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+.hire-me-btn:not(:hover) ~ .stars {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.stars img {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+</style>
