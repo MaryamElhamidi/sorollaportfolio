@@ -1,0 +1,89 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+---
+
+<MainLayout>
+  <main class="max-w-6xl mx-auto px-6 py-24 grid grid-cols-1 md:grid-cols-2 gap-20">
+
+    <!-- LEFT COLUMN -->
+    <section class="space-y-10">
+      <div>
+        <h1 class="text-5xl font-bold mb-4">
+          <span class="highlight-marker">My Portfolio</span>
+        </h1>
+        <p class="max-w-md text-lg leading-relaxed">
+          Have a project in mind or a question? Reach out via the form below,
+          email me directly, or connect with me on social media.
+        </p>
+      </div>
+
+      <div>
+        <span class="highlight-marker inline-block mb-2">Email</span>
+        <p class="text-lg">MaryamElhamidi@outlook.com</p>
+      </div>
+
+
+    
+    <div>
+  <span class="highlight-marker inline-block mb-4">Socials</span>
+
+    <div class="flex items-center gap-6 text-lg">
+        <a
+        href="https://github.com/YOUR_GITHUB_USERNAME"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-2 hover:underline transition-all hover:translate-x-1"
+        >
+        Github 🐙 @MaryamElhamidi
+        </a>
+
+        <a
+        href="https://www.linkedin.com/in/YOUR_LINKEDIN_USERNAME"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-2 hover:underline transition-all hover:translate-x-1"
+        >
+        Linkedin 💼 @MaryamElhamidi
+        </a>
+
+        <a
+        href="https://devpost.com/YOUR_DEVPOST_USERNAME"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-2 hover:underline transition-all hover:translate-x-1"
+        >
+        Devpost 🚀 @MaryamElhamidi
+        </a>
+    </div>
+    </div>
+
+
+    </section>
+
+    <!-- RIGHT COLUMN -->
+    <section>
+      <span class="highlight-marker inline-block mb-6">Contact Form</span>
+
+      <form class="space-y-8">
+        <div>
+          <label class="block font-semibold mb-1">Name</label>
+          <input class="w-full bg-transparent border-b-2 border-black py-2 focus:outline-none" />
+        </div>
+
+        <div>
+          <label class="block font-semibold mb-1">Email</label>
+          <input class="w-full bg-transparent border-b-2 border-black py-2 focus:outline-none" />
+        </div>
+
+        <div>
+          <label class="block font-semibold mb-1">Your Message</label>
+          <textarea rows="4" class="w-full bg-transparent border-b-2 border-black py-2 focus:outline-none resize-none"></textarea>
+        </div>
+
+        <button class="w-full bg-black text-white py-4 rounded-full font-semibold hover:scale-[1.02] transition">
+          Submit
+        </button>
+      </form>
+    </section>
+  </main>
+</MainLayout>
