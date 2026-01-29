@@ -226,7 +226,10 @@ ul > li.flex.items-center a:hover img {
 
 .content-layer a,
 .content-layer button,
-.content-layer input {
+.content-layer input,
+.content-layer textarea,
+.content-layer label,
+.content-layer form {
   pointer-events: auto;
 }
 
