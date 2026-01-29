@@ -55,12 +55,16 @@ import Footer from "@/components/Footer.astro";
 
         <!-- NETLIFY FORM -->
         <form
-          name="contact"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          class="space-y-8"
-          onsubmit="showSuccess(event)"
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="space-y-8"
+        onsubmit="return showSuccess(event)"
+        action="/"  
+        novalidate
         >
+
           <!-- REQUIRED hidden input -->
           <input type="hidden" name="form-name" value="contact" />
 
@@ -166,6 +170,8 @@ function showSuccess(event) {
       }
     })
     .catch(() => alert("Oops! Something went wrong. Try again."));
+
+  return false;  // this stops the default Netlify redirect
 }
 </script>
 
