@@ -114,12 +114,11 @@ import Footer from "@/components/Footer.astro";
           >
             Submit
           </button>
-
-          <!-- Custom success message -->
+        </form>
+                  <!-- Custom success message -->
           <div id="successMessage" class="hidden mt-6 p-6 bg-[#ffccd5] text-black rounded-2xl text-center text-lg font-bold animate-fade-in">
             ✨ Yay! Your message is on its way, I’ll get back to you soon! ✨
           </div>
-        </form>
       </section>
     </main>
 
@@ -162,8 +161,9 @@ function showSuccess(event) {
   })
     .then(() => {
       form.reset();
-      form.style.display = "none";
+      form.style.display = "none"; // hide form
 
+      // show success message
       const successDiv = document.getElementById("successMessage");
       if (successDiv) {
         successDiv.classList.remove("hidden");
@@ -171,8 +171,9 @@ function showSuccess(event) {
     })
     .catch(() => alert("Oops! Something went wrong. Try again."));
 
-  return false;  // this stops the default Netlify redirect
+  return false; // prevent Netlify redirect
 }
+
 </script>
 
     <!-- NETLIFY STATIC FORM FALLBACK -->
