@@ -1,89 +1,138 @@
 ---
-import MainLayout from "@/layouts/MainLayout.astro";
+export const prerender = true;
+
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
 ---
 
-<MainLayout>
-  <main class="max-w-6xl mx-auto px-6 py-24 grid grid-cols-1 md:grid-cols-2 gap-20">
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Contact | Maryam Elhamidi</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
 
-    <!-- LEFT COLUMN -->
-    <section class="space-y-10">
-      <div>
-        <h1 class="text-5xl font-bold mb-4">
-          <span class="highlight-marker">My Portfolio</span>
-        </h1>
-        <p class="max-w-md text-lg leading-relaxed">
-          Have a project in mind or a question? Reach out via the form below,
-          email me directly, or connect with me on social media.
+  <body class="bg-[#f2f2f2] text-black">
+    <Header />
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-6xl mx-auto px-6 py-24 grid grid-cols-1 md:grid-cols-2 gap-20">
+
+      <!-- LEFT COLUMN -->
+      <section class="space-y-10">
+        <div>
+          <h1 class="text-5xl font-bold mb-4">
+            <span class="highlight-marker">My Portfolio</span>
+          </h1>
+          <p class="max-w-md text-lg leading-relaxed">
+            Have a project in mind or a question? Reach out via the form,
+            email me directly, or connect with me on social media.
+          </p>
+        </div>
+
+        <div>
+          <span class="highlight-marker inline-block mb-2">Email</span>
+          <p class="text-lg">MaryamElhamidi@outlook.com</p>
+        </div>
+
+        <div>
+          <span class="highlight-marker inline-block mb-4">Socials</span>
+          <div class="flex items-center gap-6 text-lg">
+            <a href="https://github.com/MaryamElhamidi" target="_blank" class="hover:underline">
+              @MaryamElhamidi
+            </a>
+            <a href="https://www.linkedin.com/in/maryam-elhamidi" target="_blank" class="hover:underline">
+              @MaryamElhamidi
+            </a>
+            <a href="https://devpost.com/maryamelhamidi" target="_blank" class="hover:underline">
+              @MaryamElhamidi
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN (FORM) -->
+      <section>
+        <span class="highlight-marker inline-block mb-6">Contact Form</span>
+
+        <!-- NETLIFY FORM -->
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          class="space-y-8"
+        >
+          <!-- REQUIRED hidden input -->
+          <input type="hidden" name="form-name" value="contact" />
+
+          <!-- Honeypot -->
+          <p class="hidden">
+            <label>
+              Don’t fill this out: <input name="bot-field" />
+            </label>
+          </p>
+
+          <div>
+            <label class="block font-semibold mb-1">Name</label>
+            <input
+              type="text"
+              name="name"
+              placeholder="John Doe"
+              required
+              class="w-full bg-transparent border-b-2 border-black py-2 focus:outline-none"
+            />
+          </div>
+
+          <div>
+            <label class="block font-semibold mb-1">Email</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="johndoe451@gmail.com"
+              required
+              class="w-full bg-transparent border-b-2 border-black py-2 focus:outline-none"
+            />
+          </div>
+
+          <div>
+            <label class="block font-semibold mb-1">Your Message</label>
+            <textarea
+              name="message"
+              rows="4"
+              placeholder="Hi Maryam..."
+              required
+              class="w-full bg-transparent border-b-2 border-black py-2 focus:outline-none resize-none"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-black text-white py-4 rounded-full font-semibold hover:scale-[1.02] transition"
+          >
+            Submit
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <!-- CTA FOOTER -->
+    <section class="bg-black text-white py-28 mt-24">
+      <div class="max-w-5xl mx-auto text-center space-y-6 px-6">
+        <h2 class="text-4xl font-semibold">Ready to Bring Your Vision to Life?</h2>
+        <p class="text-lg opacity-80 max-w-2xl mx-auto">
+          Let’s make something incredible together.
         </p>
+        <a
+          href="#"
+          class="inline-block bg-white text-black px-8 py-3 rounded-full font-semibold hover:scale-105 transition"
+        >
+          Hire Me!
+        </a>
       </div>
-
-      <div>
-        <span class="highlight-marker inline-block mb-2">Email</span>
-        <p class="text-lg">MaryamElhamidi@outlook.com</p>
-      </div>
-
-
-    
-    <div>
-  <span class="highlight-marker inline-block mb-4">Socials</span>
-
-    <div class="flex items-center gap-6 text-lg">
-        <a
-        href="https://github.com/YOUR_GITHUB_USERNAME"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="flex items-center gap-2 hover:underline transition-all hover:translate-x-1"
-        >
-        Github 🐙 @MaryamElhamidi
-        </a>
-
-        <a
-        href="https://www.linkedin.com/in/YOUR_LINKEDIN_USERNAME"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="flex items-center gap-2 hover:underline transition-all hover:translate-x-1"
-        >
-        Linkedin 💼 @MaryamElhamidi
-        </a>
-
-        <a
-        href="https://devpost.com/YOUR_DEVPOST_USERNAME"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="flex items-center gap-2 hover:underline transition-all hover:translate-x-1"
-        >
-        Devpost 🚀 @MaryamElhamidi
-        </a>
-    </div>
-    </div>
-
-
     </section>
 
-    <!-- RIGHT COLUMN -->
-    <section>
-      <span class="highlight-marker inline-block mb-6">Contact Form</span>
-        <input
-        type="text"
-        name="name"
-        placeholder="John Doe"
-        class="w-full bg-transparent border-b-2 border-black py-2 focus:outline-none placeholder-gray-400"
-        />
-
-        <input
-        type="email"
-        name="email"
-        placeholder="JohnDoe451@gmail.com"
-        class="w-full bg-transparent border-b-2 border-black py-2 focus:outline-none placeholder-gray-400"
-        />
-
-        <textarea
-        name="message"
-        rows="4"
-        placeholder="Hi Maryam..."
-        class="w-full bg-transparent border-b-2 border-black py-2 focus:outline-none resize-none placeholder-gray-400"
-        ></textarea>
-
-    </section>
-  </main>
-</MainLayout>
+    <Footer />
+  </body>
+</html>
