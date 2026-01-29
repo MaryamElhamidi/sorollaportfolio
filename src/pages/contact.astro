@@ -54,14 +54,15 @@ import Footer from "@/components/Footer.astro";
         <span class="highlight-marker inline-block mb-6">Contact Form</span>
 
         <!-- NETLIFY AJAX FORM -->
-        <form
-          id="contactForm"
-          name="contact"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          class="space-y-8"
-          onsubmit="return showSuccess(event)"
+     <form
+        id="contactForm"
+        name="contact"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="space-y-8"
+        onsubmit="return showSuccess(event)"
         >
+
           <!-- REQUIRED hidden input -->
           <input type="hidden" name="form-name" value="contact" />
 
@@ -143,41 +144,38 @@ import Footer from "@/components/Footer.astro";
     <Footer />
 
     <!-- AJAX submission JS -->
-    <script>
-      
+<script>
+// @ts-ignore
 function showSuccess(event) {
-  // prevent default submit
-  event.preventDefault?.();
+  event.preventDefault();
 
-  // get the form safely
-  const form = document.getElementById("contactForm");
-  if (!form) return false; // stop if form not found
+  const formEl = document.getElementById("contactForm");
+  if (!formEl) return false;
+
+  const form = formEl instanceof HTMLFormElement ? formEl : null;
+  if (!form) return false;
 
   const formData = new FormData(form);
-
-  // convert FormData to URLSearchParams for Netlify
   const params = new URLSearchParams();
   formData.forEach((value, key) => {
     if (typeof value === "string") params.append(key, value);
   });
 
-  // AJAX POST to Netlify
   fetch("/", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: params
   })
     .then(() => {
-      form.style.display = "none"; // hide the form
-
+      form.style.display = "none";
       const successDiv = document.getElementById("successMessage");
-      if (successDiv) successDiv.classList.remove("hidden"); // show message
+      if (successDiv) successDiv.classList.remove("hidden");
     })
     .catch(() => alert("Oops! Something went wrong. Try again."));
 
-  return false; // prevent Netlify redirect
+  return false;
 }
-    </script>
+</script>
 
     <!-- NETLIFY STATIC FORM FALLBACK -->
     <form name="contact" data-netlify="true" hidden>
