@@ -63,27 +63,27 @@ import MainLayout from "@/layouts/MainLayout.astro";
     <!-- RIGHT COLUMN -->
     <section>
       <span class="highlight-marker inline-block mb-6">Contact Form</span>
+        <input
+        type="text"
+        name="name"
+        placeholder="John Doe"
+        class="w-full bg-transparent border-b-2 border-black py-2 focus:outline-none placeholder-gray-400"
+        />
 
-      <form class="space-y-8">
-        <div>
-          <label class="block font-semibold mb-1">Name</label>
-          <input class="w-full bg-transparent border-b-2 border-black py-2 focus:outline-none" />
-        </div>
+        <input
+        type="email"
+        name="email"
+        placeholder="JohnDoe451@gmail.com"
+        class="w-full bg-transparent border-b-2 border-black py-2 focus:outline-none placeholder-gray-400"
+        />
 
-        <div>
-          <label class="block font-semibold mb-1">Email</label>
-          <input class="w-full bg-transparent border-b-2 border-black py-2 focus:outline-none" />
-        </div>
+        <textarea
+        name="message"
+        rows="4"
+        placeholder="Hi Maryam..."
+        class="w-full bg-transparent border-b-2 border-black py-2 focus:outline-none resize-none placeholder-gray-400"
+        ></textarea>
 
-        <div>
-          <label class="block font-semibold mb-1">Your Message</label>
-          <textarea rows="4" class="w-full bg-transparent border-b-2 border-black py-2 focus:outline-none resize-none"></textarea>
-        </div>
-
-        <button class="w-full bg-black text-white py-4 rounded-full font-semibold hover:scale-[1.02] transition">
-          Submit
-        </button>
-      </form>
     </section>
   </main>
 </MainLayout>
