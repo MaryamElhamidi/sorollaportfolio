@@ -10,7 +10,6 @@ import Footer from "@/components/Footer.astro";
     <BaseHead title="Contact | Maryam Elhamidi" description="Get in touch with Maryam Elhamidi" />
   </head>
 
-
   <body class="bg-[#f2f2f2] text-black">
     <Header />
 
@@ -61,6 +60,7 @@ import Footer from "@/components/Footer.astro";
           data-netlify="true"
           netlify-honeypot="bot-field"
           class="space-y-8"
+          onsubmit="showSuccess(event)"
         >
           <!-- REQUIRED hidden input -->
           <input type="hidden" name="form-name" value="contact" />
@@ -112,10 +112,10 @@ import Footer from "@/components/Footer.astro";
             Submit
           </button>
 
-            <!-- Custom success message -->
-        <div id="successMessage" class="hidden mt-6 p-6 bg-ppink text-white rounded-2xl text-center text-lg font-semibold animate-fade-in">
-            🎉 Thanks for reaching out! I’ll get back to you soon.
-        </div>
+          <!-- Custom success message -->
+          <div id="successMessage" class="hidden mt-6 p-6 bg-[#ffccd5] text-black rounded-2xl text-center text-lg font-bold animate-fade-in">
+            ✨ Yay! Your message is on its way, I’ll get back to you soon! ✨
+          </div>
         </form>
       </section>
     </main>
@@ -137,12 +137,40 @@ import Footer from "@/components/Footer.astro";
     </section>
 
     <Footer />
+
+    <script type="module">
+      function showSuccess(event: SubmitEvent) {
+        event.preventDefault();
+
+        const form = event.target as HTMLFormElement;
+        const formData = new FormData(form);
+
+        const params = new URLSearchParams();
+        formData.forEach((value, key) => {
+          if (typeof value === "string") {
+            params.append(key, value);
+          }
+        });
+
+        fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: params
+        })
+          .then(() => {
+            form.reset();
+            form.style.display = "none";
+            document.getElementById("successMessage")?.classList.remove("hidden");
+          })
+          .catch(() => alert("Oops! Something went wrong. Try again."));
+      }
+    </script>
+
+    <!-- NETLIFY STATIC FORM FALLBACK -->
+    <form name="contact" data-netlify="true" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <textarea name="message"></textarea>
+    </form>
   </body>
 </html>
-
-<!-- NETLIFY STATIC FORM FALLBACK -->
-<form name="contact" data-netlify="true" hidden>
-  <input type="text" name="name" />
-  <input type="email" name="email" />
-  <textarea name="message"></textarea>
-</form>
