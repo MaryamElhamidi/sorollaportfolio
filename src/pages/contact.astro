@@ -137,34 +137,38 @@ import Footer from "@/components/Footer.astro";
     </section>
 
     <Footer />
+<script>
+// @ts-ignore
+function showSuccess(event) {
+  event.preventDefault();
 
-    <script type="module">
-      function showSuccess(event: SubmitEvent) {
-        event.preventDefault();
+  const form = event.target;
+  const formData = new FormData(form);
 
-        const form = event.target as HTMLFormElement;
-        const formData = new FormData(form);
+  const params = new URLSearchParams();
+  formData.forEach((value, key) => {
+    if (typeof value === "string") {
+      params.append(key, value);
+    }
+  });
 
-        const params = new URLSearchParams();
-        formData.forEach((value, key) => {
-          if (typeof value === "string") {
-            params.append(key, value);
-          }
-        });
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: params
+  })
+    .then(() => {
+      form.reset();
+      form.style.display = "none";
 
-        fetch("/", {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: params
-        })
-          .then(() => {
-            form.reset();
-            form.style.display = "none";
-            document.getElementById("successMessage")?.classList.remove("hidden");
-          })
-          .catch(() => alert("Oops! Something went wrong. Try again."));
+      const successDiv = document.getElementById("successMessage");
+      if (successDiv) {
+        successDiv.classList.remove("hidden");
       }
-    </script>
+    })
+    .catch(() => alert("Oops! Something went wrong. Try again."));
+}
+</script>
 
     <!-- NETLIFY STATIC FORM FALLBACK -->
     <form name="contact" data-netlify="true" hidden>
