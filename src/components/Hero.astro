@@ -55,6 +55,8 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
         </div>
         <div class="h-96 w-72 md:h-[28rem] md:w-80 overflow-hidden relative -mt-32 rounded-2xl">
           <Image
+            id="hero-image"
+            loading="eager"
             class="object-bottom absolute bottom-0 group-hover:scale-105 transition"
             src={images["/src/assets/hero.webp"]()}
             alt="Maryam, photo wiki"

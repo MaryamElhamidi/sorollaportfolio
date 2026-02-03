@@ -41,8 +41,12 @@
   const loader = document.getElementById('loader');
   const progressText = document.getElementById('progress-text');
   const progressBar = document.getElementById('progress-bar');
+  const heroImage = document.getElementById('hero-image');
 
   let progress = 0;
+  // Track if window load and image load are done
+  let windowLoaded = false;
+  let imageLoaded = false;
   
   // Artificial progress increment
   const interval = setInterval(() => {
@@ -60,8 +64,14 @@
     if (progressBar) progressBar.style.width = progress + '%';
   }
 
-  // When real loading finishes
-  window.addEventListener('load', () => {
+  function checkAllLoaded() {
+    // Only finish if both window is ready and image (if it exists) is loaded
+    if (windowLoaded && imageLoaded) {
+      finishLoading();
+    }
+  }
+
+  function finishLoading() {
     clearInterval(interval);
     progress = 100;
     updateUI();
@@ -76,5 +86,40 @@
         }, 1000);
       }
     }, 500); 
+  }
+
+  // Check image status helper
+  function markImageLoaded() {
+    imageLoaded = true;
+    checkAllLoaded();
+  }
+
+  // Window load listener
+  window.addEventListener('load', () => {
+    windowLoaded = true;
+    
+    // Double check image status immediately after window load
+    // in case it finished right then or was cached
+    if (!heroImage) {
+        // If no hero image on this page, just mark true
+        imageLoaded = true;
+    } else if (heroImage.complete) {
+        imageLoaded = true;
+    }
+    
+    checkAllLoaded();
   });
+
+  // Specific Image Listener setup
+  if (heroImage) {
+    if (heroImage.complete) {
+      markImageLoaded();
+    } else {
+      heroImage.addEventListener('load', markImageLoaded);
+      heroImage.addEventListener('error', markImageLoaded); // Proceed on error
+    }
+  } else {
+    // No hero image? treat as loaded
+    markImageLoaded();
+  }
 </script>
