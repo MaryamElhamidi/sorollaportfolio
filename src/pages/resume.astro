@@ -1,0 +1,57 @@
+---
+import BaseHead from "@/components/BaseHead.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+
+const title = "My Resume";
+const description = "View and download my resume.";
+const resumeUrl = "https://drive.google.com/file/d/157oBpSUiDqZ-5avXet4isD6q_7DfQkhX/preview";
+const downloadUrl = "https://drive.google.com/file/d/157oBpSUiDqZ-5avXet4isD6q_7DfQkhX/view?usp=sharing";
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body class="bg-gray-50 text-black font-sans selection:bg-ppink selection:text-white flex flex-col min-h-screen">
+    <Header />
+    
+    <main class="w-full flex-grow flex items-center justify-center py-24 px-6">
+      <div class="container mx-auto max-w-4xl text-center">
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-8 font-kablamo text-pblue">My Resume</h1>
+
+        <div class="bg-white p-4 rounded-xl shadow-2xl border border-gray-200">
+            <div class="relative w-full aspect-[8.5/11] max-h-[80vh] overflow-hidden rounded-lg bg-gray-100">
+                <iframe 
+                    src={resumeUrl} 
+                    width="100%" 
+                    height="100%" 
+                    class="absolute inset-0 border-0"
+                    title="Resume Preview">
+                </iframe>
+            </div>
+        </div>
+
+        <div class="mt-10">
+            <a 
+                href={downloadUrl} 
+                target="_blank" 
+                class="inline-flex items-center gap-2 bg-pgreen text-black px-8 py-3 rounded-full font-bold shadow-card hover:shadow-hover hover:scale-105 active:scale-95 transition"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Download PDF
+            </a>
+            <p class="mt-4 text-gray-500 text-sm">
+                Having trouble viewing? <a href={downloadUrl} target="_blank" class="underline hover:text-pblue">Click here to open directly in Google Drive.</a>
+            </p>
+        </div>
+
+      </div>
+    </main>
+
+    <Footer />
+  </body>
+</html>
