@@ -94,8 +94,7 @@
     checkAllLoaded();
   }
 
-  // Window load listener
-  window.addEventListener('load', () => {
+  function handleWindowLoad() {
     windowLoaded = true;
     
     // Double check image status immediately after window load
@@ -108,7 +107,14 @@
     }
     
     checkAllLoaded();
-  });
+  }
+
+  // Window load listener
+  if (document.readyState === 'complete') {
+    handleWindowLoad();
+  } else {
+    window.addEventListener('load', handleWindowLoad);
+  }
 
   // Specific Image Listener setup
   if (heroImage) {
