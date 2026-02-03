@@ -2,6 +2,7 @@
 import BaseHead from "@/components/BaseHead.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
+import Loader from "@/components/Loader.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
@@ -12,6 +13,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
   </head>
 
   <body class="relative min-h-screen overflow-hidden p-0 m-0 max-w-screen">
+    <Loader />
 
     <!-- Background animation -->
     <div id="bg-container" class="bg-layer"></div>

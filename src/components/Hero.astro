@@ -8,20 +8,23 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 
 <section class="py-50 flex md:flex-row flex-col px-4 md:px-0 gap-10 md:gap-0 self-center max-w-6xl mx-auto">
   <div class="flex flex-col gap-6 justify-start items-start md:w-1/2">
-    <h1 class="text-pblack text-3xl md:text-4xl">Website Under Construction</h1>
     <p class="text-7xl md:text-8xl font-bold">
       Hi, I am <span class="highlight-marker">Maryam</span>
     </p>
     <p class="text-lg md:text-xl">
       I am a Computer Science student specializing in Data Analytics and interested in Summer 2026 Internships.
     </p>
-    <a
-      rel="noopener noreferrer"
-      target="_blank"
-      class="bg-pgreen px-6 py-4 border-1 border-black rounded-lg shadow-card hover:shadow-hover transition text-lg md:text-xl"
-    >
-      Contact Me!
-    </a>
+    <div class="flex flex-col items-start gap-2">
+      <a
+        href="/contact"
+        class="bg-pgreen px-6 py-4 border-1 border-black rounded-lg shadow-card hover:shadow-hover transition text-lg md:text-xl"
+      >
+        Contact Me!
+      </a>
+      <p class="text-sm italic text-gray-500">
+        If there's any web issues, <a href="/contact" class="underline hover:text-black">contact me</a>.
+      </p>
+    </div>
   </div>
 
   <div class="md:w-1/2 flex items-center justify-end p-10 group">
